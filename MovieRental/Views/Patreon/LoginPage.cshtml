@@ -1,0 +1,26 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@section Styles {
+    <link href="~/css/LoginPage.css" rel="stylesheet" />
+}
+<h2>Login</h2>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="input-group">
+                <span class="input-group" id="loginBoxTitle">Login Name</span>
+                <input  type="text" class="form-control" id="loginBox">
+            </div>
+            <div class="input-group">
+                <span class="input-group" id="passwordBoxTitle">Password</span>
+                <input type="password" class="form-control" id="passwordBox"/>
+            </div>
+            <button type="button" class="btn btn-primary" id="loginButton">Login</button>
+            <button type="button" class="btn btn-success" id="newPatreonButton" onclick="location.href='@Url.Action("NewPatreon", "Patreon")'">New Account</button>
+        </div>
+        
+    </div>
+</div>
+

@@ -1,0 +1,38 @@
+﻿@model MovieRental.Models.Catalog.MovieIndexModel
+
+@section Styles {
+    <link href="~/css/CatalogIndex.css" rel="stylesheet" />
+}
+
+<div id="movies">
+    <h3>Movie Catalog</h3>
+    <div id="movieTable">
+        <table class="table table-condensed" id="catalogIndexTable">
+            <thead>
+                <tr>
+                    <th>Poster</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Director</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var movie in Model.Movies)
+                {
+                    <tr class="movieRow">
+                        <td class="">
+                            <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@movie.Id">
+                            <img src="@movie.PosterUrl" class="imageCell" />
+                            </a>
+                        </td>
+                        <td class="">@movie.Title</td>
+                        <td class="">@movie.Genre</td>
+                        <td class="">@movie.Director</td>
+                        <td><a asp-controller="Catalog" asp-action="Detail" asp-route-id="@movie.Id">Details</a></td>
+                    </tr>
+                    
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
