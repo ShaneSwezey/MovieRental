@@ -33,7 +33,7 @@ namespace MovieRental.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new Patreon
+                var newUser = new Patreon
                 {
                     FirstName = patreon.FirstName,
                     LastName = patreon.LastName,
@@ -44,7 +44,16 @@ namespace MovieRental.Controllers
                     Password = patreon.Password
                 };
 
-                //var result = await _patreons.
+                if (!_patreons.IsLoginNameUnique(newUser.LoginName))
+                {
+                    // Return view with loginIn name not unique
+                    // Change in the future
+                    return NewPatreon();
+                }
+                else
+                {
+                    _patreons.Add(newUser);
+                }
 
             }
 

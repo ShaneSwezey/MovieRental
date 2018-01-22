@@ -8,6 +8,6 @@ namespace MovieRental.Models.Catalog
     public class MovieIndexModel
     {
 
-        public IEnumerable<MovieIndexListingModel> Movies { get; set; }
+        public IQueryable<MovieIndexListingModel> Movies { get; set; }
     }
 }

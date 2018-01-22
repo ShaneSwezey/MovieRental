@@ -68,7 +68,7 @@ namespace MovieServices
 
         public Patreon GetPatreon(string loginName, string userPassword)
         {
-            return _context.Patreons.FirstOrDefault(patreon => patreon.LoginName == loginName && patreon.Password == userPassword);
+            return _context.Patreons.FirstOrDefault(patreon => patreon.LoginName.Equals(loginName) && patreon.Password.Equals(userPassword));
         }
 
         public string GetPhoneNumber(int id)

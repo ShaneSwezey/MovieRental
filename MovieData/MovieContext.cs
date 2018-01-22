@@ -12,6 +12,7 @@ namespace MovieData
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Patreon> Patreons { get; set; }
+        public DbSet<CarouselMovies> CarouselMovies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -11,9 +11,10 @@ using System;
 namespace MovieData.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    partial class MovieContextModelSnapshot : ModelSnapshot
+    [Migration("20180105234608_Carousel Migration")]
+    partial class CarouselMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,14 +37,12 @@ namespace MovieData.Migrations
 
             modelBuilder.Entity("MovieData.Models.CarouselMovies", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MovieId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CroppedPosterURL");
 
-                    b.Property<int>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId");
 
                     b.ToTable("CarouselMovies");
                 });

@@ -1,13 +1,14 @@
 ﻿using MovieData.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MovieData
 {
     public interface IMovieResource
     {
-        IEnumerable<Movie> GetAll();
+        IQueryable<Movie> GetAll();
         Movie GetById(int id);
 
         void Add(Movie newMovie);

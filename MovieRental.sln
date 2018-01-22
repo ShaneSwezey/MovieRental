@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRental", "MovieRental\MovieRental.csproj", "{78B7DE50-50E6-488A-87B8-F42473FAF431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieRental", "MovieRental\MovieRental.csproj", "{78B7DE50-50E6-488A-87B8-F42473FAF431}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieData", "MovieData\MovieData.csproj", "{70CDE046-D93F-400D-B01E-F927F24D849A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieData", "MovieData\MovieData.csproj", "{70CDE046-D93F-400D-B01E-F927F24D849A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieServices", "MovieServices\MovieServices.csproj", "{FEDAB217-7C12-4C22-B677-7C39D8533C4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieServices", "MovieServices\MovieServices.csproj", "{FEDAB217-7C12-4C22-B677-7C39D8533C4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
