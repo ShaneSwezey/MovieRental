@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MovieData;
+using MovieData.Models;
 using MovieServices;
 
 namespace MovieRental
@@ -25,6 +27,11 @@ namespace MovieRental
             services.AddScoped<IMovieResource, MovieResourceService>();
             services.AddScoped<IPatreonResource, PatreonResourceServices>();
             services.AddScoped<ICarouselResource, CarouselResourceServices>();
+
+            services.AddIdentity<Patreon, IdentityRole>()
+                .AddEntityFrameworkStores<MovieContext>()
+                .AddDefaultTokenProviders();
+
             services.AddDbContext<MovieContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("MovieConnection")));
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using MovieData;
 using MovieData.Models;
 using MovieRental.Models.Patreons;
@@ -9,10 +10,14 @@ namespace MovieRental.Controllers
     {
 
         private IPatreonResource _patreons;
+        private readonly UserManager<Patreon> _userManager;
+        private readonly SignInManager<Patreon> _signInManager;
 
-        public PatreonController(IPatreonResource patreons)
+        public PatreonController(IPatreonResource patreons, UserManager<Patreon> userManager, SignInManager<Patreon> signInManager)
         {
             _patreons = patreons;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
         
 
@@ -27,12 +32,14 @@ namespace MovieRental.Controllers
             return View();
         }
 
+        // Registers new users
         [HttpPost]
-        public IActionResult CreateAccount(PatreonRegistrationModel patreon)
+        public async System.Threading.Tasks.Task<IActionResult> CreateAccountAsync(PatreonRegistrationModel patreon)
         {
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+
                 var newUser = new Patreon
                 {
                     FirstName = patreon.FirstName,
@@ -44,21 +51,23 @@ namespace MovieRental.Controllers
                     Password = patreon.Password
                 };
 
-                if (!_patreons.IsLoginNameUnique(newUser.LoginName))
+                var result = await _userManager.CreateAsync(newUser, newUser.Password);
+
+                if (result.Succeeded)
                 {
-                    // Return view with loginIn name not unique
-                    // Change in the future
-                    return NewPatreon();
+                    await _signInManager.SignInAsync(newUser, false);
+                    return RedirectToAction("index", "Home");
                 }
                 else
                 {
-                    _patreons.Add(newUser);
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
                 }
-
             }
 
-
-            return View();
+            return View(patreon);
         }
 
     }
