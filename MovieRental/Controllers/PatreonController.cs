@@ -3,24 +3,23 @@ using Microsoft.AspNetCore.Mvc;
 using MovieData;
 using MovieData.Models;
 using MovieRental.Models.Patreons;
+using System.Threading.Tasks;
 
 namespace MovieRental.Controllers
 {
     public class PatreonController : Controller
     {
 
-        private IPatreonResource _patreons;
-        private readonly UserManager<Patreon> _userManager;
-        private readonly SignInManager<Patreon> _signInManager;
+        private IPatreonResource _patreons;                         // Pateron Services
 
-        public PatreonController(IPatreonResource patreons, UserManager<Patreon> userManager, SignInManager<Patreon> signInManager)
+        // Pateron Controller Constructor
+        public PatreonController(IPatreonResource patreons)
         {
             _patreons = patreons;
-            _userManager = userManager;
-            _signInManager = signInManager;
+           
         }
         
-
+        // Returns login razor view page
         public IActionResult LoginPage()
         {
             return View();
@@ -31,10 +30,10 @@ namespace MovieRental.Controllers
         {
             return View();
         }
-
+        /*
         // Registers new users
         [HttpPost]
-        public async System.Threading.Tasks.Task<IActionResult> CreateAccountAsync(PatreonRegistrationModel patreon)
+        public async Task<IActionResult> CreateAccountAsync(PatreonRegistrationModel patreon)
         {
 
             if (!ModelState.IsValid)
@@ -69,6 +68,6 @@ namespace MovieRental.Controllers
 
             return View(patreon);
         }
-
+        */
     }
 }

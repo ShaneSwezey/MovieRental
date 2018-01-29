@@ -20,7 +20,7 @@ namespace MovieData
         string GetSynopsis(int id);
         string GetUserRating(int id);
         string GetPosterUrl(int id);
-        List<Actor> GetActors(int id);
+        IEnumerable<Actor> GetActors(int id);
         Actor GetActorById(int id);
 
     }

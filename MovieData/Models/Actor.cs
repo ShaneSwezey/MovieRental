@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace MovieData.Models
 {
@@ -10,6 +11,6 @@ namespace MovieData.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public List<MovieActor> MovieActors { get; set; }
+        public IEnumerable<MovieActor> MovieActors { get; set; }
     }
 }

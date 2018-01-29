@@ -118,8 +118,9 @@ namespace MovieServices
         }
 
         
-        public List<Actor> GetActors(int id)
+        public IEnumerable<Actor> GetActors(int id)
         {
+            
             var movie = GetById(id);
             if (movie.Equals(null) || movie.MovieActors.Equals(null))
             {

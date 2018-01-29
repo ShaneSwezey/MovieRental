@@ -28,10 +28,6 @@ namespace MovieRental
             services.AddScoped<IPatreonResource, PatreonResourceServices>();
             services.AddScoped<ICarouselResource, CarouselResourceServices>();
 
-            services.AddIdentity<Patreon, IdentityRole>()
-                .AddEntityFrameworkStores<MovieContext>()
-                .AddDefaultTokenProviders();
-
             services.AddDbContext<MovieContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("MovieConnection")));
         }

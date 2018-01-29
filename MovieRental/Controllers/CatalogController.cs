@@ -53,7 +53,7 @@ namespace MovieRental.Controllers
                 Rating = movie.Rating,
                 UserRating = movie.UserRating,
                 ImageUrl = movie.PosterUrl,
-                Actors = _movies.GetActors(id)
+                Actors = _movies.GetActors(id).ToList()
             };
 
             return View(movieDetail);

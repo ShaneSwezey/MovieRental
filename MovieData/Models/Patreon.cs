@@ -8,7 +8,7 @@ namespace MovieData.Models
 {
     public class Patreon
     {
-
+        
         public int PatreonId { get; set; }
         [Required]
         public string FirstName { get; set; }
@@ -16,6 +16,7 @@ namespace MovieData.Models
         public string LastName { get; set; }
         [Required]
         public string Address { get; set; }
+        [EmailAddress]
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
         [Required]
