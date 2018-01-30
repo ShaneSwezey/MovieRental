@@ -29,42 +29,30 @@ namespace MovieServices
 
         public string GetAddress(int id)
         {
-            var patreon = GetById(id);
-            if (patreon == null)
-            {
-                return "";
-            }
-            return patreon.Address;
+            return _context.Patreons
+                .FirstOrDefault(p => p.PatreonId == id)
+                .Address;
         }
 
         public string GetEmailAddress(int id)
         {
-            var patreon = GetById(id);
-            if (patreon == null)
-            {
-                return "";
-            }
-            return patreon.EmailAddress;
+            return _context.Patreons
+                .FirstOrDefault(p => p.PatreonId == id)
+                .EmailAddress;
         }
 
         public string GetFirstName(int id)
         {
-            var patreon = GetById(id);
-            if (patreon == null)
-            {
-                return "";
-            }
-            return patreon.FirstName;
+            return _context.Patreons
+                .FirstOrDefault(p => p.PatreonId == id)
+                .FirstName;
         }
 
         public string GetLastName(int id)
         {
-            var patreon = GetById(id);
-            if (patreon == null)
-            {
-                return "";
-            }
-            return patreon.LastName;
+            return _context.Patreons
+                .FirstOrDefault(p => p.PatreonId == id)
+                .LastName;
         }
 
         public Patreon GetPatreon(string loginName, string userPassword)
@@ -74,12 +62,9 @@ namespace MovieServices
 
         public string GetPhoneNumber(int id)
         {
-            var patreon = GetById(id);
-            if (patreon == null)
-            {
-                return "";
-            }
-            return patreon.PhoneNumber;
+            return _context.Patreons
+                 .FirstOrDefault(p => p.PatreonId == id)
+                 .PhoneNumber;
         }
 
         public bool IsLoginNameUnique(string proposedLoginName)

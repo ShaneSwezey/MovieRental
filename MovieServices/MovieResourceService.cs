@@ -39,82 +39,58 @@ namespace MovieServices
 
         public string GetDirector(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.Director;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .Director;
         }
 
         public string GetGenre(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.Genre;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .Genre;
         }
 
         public string GetRating(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.Rating;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .Rating;
         }
 
         public DateTime GetReleaseDate(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return DateTime.Today;
-            }
-            return movie.ReleaseDate;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .ReleaseDate;
         }
 
         public string GetSynopsis(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.Synopsis;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .Synopsis;
         }
 
         public string GetTitle(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.Title;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .Title;
         }
 
         public string GetUserRating(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.UserRating;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .UserRating;
         }
 
         public string GetPosterUrl(int id)
         {
-            var movie = GetById(id);
-            if (movie.Equals(null))
-            {
-                return "";
-            }
-            return movie.PosterUrl;
+            return _context.Movies
+                .FirstOrDefault(m => m.MovieId == id)
+                .PosterUrl;
         }
 
         
