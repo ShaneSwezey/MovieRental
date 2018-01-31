@@ -2,7 +2,7 @@
 using MovieData.Models;
 using System;
 using System.Linq;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace MovieServices
 {
@@ -21,9 +21,10 @@ namespace MovieServices
         }
 
 
-        public Hashtable GetMoviesTable()
+        public Dictionary<int, string> GetMoviesTable()
         {
-            Hashtable movieTable = new Hashtable();
+
+            Dictionary<int, string> movieTable = new Dictionary<int, string>();
 
             foreach (var movie in _context.CarouselMovies)
             {

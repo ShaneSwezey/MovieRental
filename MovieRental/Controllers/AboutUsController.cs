@@ -1,23 +1,48 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+using MovieData;
+using MovieRental.Models.AboutUs;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieRental.Controllers
 {
     public class AboutUsController : Controller
     {
 
+        private ICompanyResource _companyServices;
 
-        public AboutUsController()
+        public AboutUsController(ICompanyResource companyServices)
         {
-
+            _companyServices = companyServices;
         }
 
         public IActionResult Index()
         {
-            return null;
+
+            var companyList = _companyServices.GetAll();
+
+            var companyListing = companyList
+                .Select(result => new CompanyDetailModel
+                {
+                    OfficeId = result.OfficeId,
+                    Address = result.Address,
+                    City = result.City,
+                    State = result.State,
+                    ImageAddress = result.ImageAddress,
+
+                    CompanyEmails = result.CompanyEmails
+                    .Select(c => c.EmailAddress),
+
+                    CompanyPhoneNumbers = result.CompanyPhoneNumbers
+                    .Select(c => c.PhoneNumber)
+                });
+
+            var officeList = new CompanyListingModel
+            {
+                OfficeList = companyListing
+            };
+            
+
+            return View(officeList);
         }
 
     }

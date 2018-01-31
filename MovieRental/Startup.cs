@@ -27,6 +27,7 @@ namespace MovieRental
             services.AddScoped<IMovieResource, MovieResourceService>();
             services.AddScoped<IPatreonResource, PatreonResourceServices>();
             services.AddScoped<ICarouselResource, CarouselResourceServices>();
+            services.AddScoped<ICompanyResource, CompanyResourceServices>();
 
             services.AddDbContext<MovieContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("MovieConnection")));

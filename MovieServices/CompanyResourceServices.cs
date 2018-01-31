@@ -1,11 +1,12 @@
-﻿using MovieData;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieData;
 using MovieData.Models;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MovieServices
 {
-    class CompanyResourceServices : ICompanyResource
+    public class CompanyResourceServices : ICompanyResource
     {
         // DbContext
         private MovieContext _context;
@@ -25,7 +26,9 @@ namespace MovieServices
 
         public IEnumerable<Company> GetAll()
         {
-            return _context.Company;
+            return _context.Company
+                .Include(c => c.CompanyPhoneNumbers)
+                .Include(c => c.CompanyEmails);
         }
 
         public string GetCity(int id)

@@ -32,6 +32,15 @@ namespace MovieData
                 .HasOne(pt => pt.Actor)
                 .WithMany(t => t.MovieActors)
                 .HasForeignKey(pt => pt.ActorId);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(c => c.CompanyEmails)
+                .WithOne(e => e.Company);
+
+            modelBuilder.Entity<Company>()
+                .HasMany(c => c.CompanyPhoneNumbers)
+                .WithOne(e => e.Company);
+
         }
       
 

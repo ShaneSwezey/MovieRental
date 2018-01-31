@@ -1,6 +1,6 @@
 ﻿using MovieData.Models;
 using System.Linq;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace MovieData
 {
@@ -8,6 +8,6 @@ namespace MovieData
     {
         // Retreives movie ids for home page carousel.
         IQueryable<CarouselMovies> GetMovies();
-        Hashtable GetMoviesTable();
+        Dictionary<int, string> GetMoviesTable();
     }
 }

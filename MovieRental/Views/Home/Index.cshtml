@@ -23,38 +23,37 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             @{
-            int count = 0;
-            foreach (var movie in Model.carouselMovieList)
-            {
-                if (count == 0)
+                int count = 0;
+                foreach (var movie in Model.carouselMovieList)
                 {
-                    <div class="item active">
-                        <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@movie.movieId">
-                            <img src="@movie.croppedImageUrl" alt="@movie.title" class="img-responsive" />
-                        </a>
-                        <div class="carousel-caption" role="option">
-                            <p>
-                                @movie.synopsis
-                            </p>
+                    if (count == 0)
+                    {
+                        <div class="item active">
+                            <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@movie.movieId">
+                                <img src="@movie.croppedImageUrl" alt="@movie.title" class="img-responsive" />
+                            </a>
+                            <div class="carousel-caption" role="option">
+                                <p>
+                                    @movie.synopsis
+                                </p>
+                            </div>
                         </div>
-                    </div>
-            }
-            else
-            {
-                <div class="item">
-                    <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@movie.movieId">
-                        <img src="@movie.croppedImageUrl" alt="@movie.title" class="img-responsive" />
-                    </a>
-                    <div class="carousel-caption" role="option">
-                        <p>
-                            @movie.synopsis
-                        </p>
-                    </div>
-                </div>
-
-        }
-        count++;
-    }
+                }
+                    else
+                    {
+                        <div class="item">
+                            <a asp-controller="Catalog" asp-action="Detail" asp-route-id="@movie.movieId">
+                                <img src="@movie.croppedImageUrl" alt="@movie.title" class="img-responsive" />
+                            </a>
+                            <div class="carousel-caption" role="option">
+                                <p>
+                                    @movie.synopsis
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    count++;
+                }
             }
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
