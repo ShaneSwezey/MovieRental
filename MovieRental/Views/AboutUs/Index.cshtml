@@ -4,36 +4,39 @@
     <link href="~/css/CatalogDetail.css" rel="stylesheet" />
 }
 
-<div class="container">
-    <div class="page-header clearfix detailHeading">
-        <h1><b>About Us</b></h1>
+    <div class="container">
+        <div class="page-header clearfix detailHeading">
+            <h1><b>About Us</b></h1>
+            @foreach (var office in Model.OfficeList)
+             {
+                <button type="button" class="btn btn-secondary" onclick='getOfficeInfo(@office.OfficeId)'>@office.City</button>
+             }
+        </div>
+        
     </div>
-</div>
 
-@foreach (var office in Model.OfficeList)
-{
-    <div class="jumbotron">
-        <h2 class="display-3">@office.City Office</h2>
-        <hr class="my-4">
-        <div class="col-md-8">
-            <p><span class="Title">Address</span>: @office.Address @office.City, @office.State</p>
-            <p><span class="Title">Email</span>:</p>
-            <ul class="Emails">
-                @foreach (var email in office.CompanyEmails)
-                {
-                    <li><a href="@email">@email</a></li>
-                }
-            </ul>
-            <p><span class="Title">Customer Service Number</span>:</p>
-            <ul class="Emails">
-                @foreach (var phoneNumber in office.CompanyPhoneNumbers)
-                {
-                    <li>@string.Format("{0:(###) ###-####}", double.Parse(phoneNumber))</li>
-                }
-            </ul>
-        </div>
-        <div class="col-4">
-            <img class="detailImage" src="@office.ImageAddress" />
-        </div>
+    <div id="PartialView">
+        @Html.Partial("_OfficeInfo", Model.OfficeList[0])
     </div>
-}
+
+<script type="text/javascript">
+
+    getOfficeInfo(0);
+
+    function getOfficeInfo(officeId) {
+        $.ajax({
+            type: "POST",
+            url: "/AboutUs/PartialOfficeInfo",
+            data: { "Id": officeId },
+            dataType: "html",
+            success: function (result) {
+
+                $('#PartialView').html(result)
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
+    }
+    
+</script>

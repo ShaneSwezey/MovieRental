@@ -38,12 +38,35 @@ namespace MovieRental.Controllers
 
             var officeList = new CompanyListingModel
             {
-                OfficeList = companyListing
+                OfficeList = companyListing.ToList()
             };
             
 
             return View(officeList);
         }
+        
+        [HttpPost]
+        public IActionResult PartialOfficeInfo(int Id)
+        {
+           
+            var result = _companyServices.GetOfficeById(Id);
+            var OfficeModel = new CompanyDetailModel
+            {
+                OfficeId = result.OfficeId,
+                Address = result.Address,
+                City = result.City,
+                State = result.State,
+                ImageAddress = result.ImageAddress,
 
+                CompanyEmails = result.CompanyEmails
+                    .Select(c => c.EmailAddress),
+
+                CompanyPhoneNumbers = result.CompanyPhoneNumbers
+                    .Select(c => c.PhoneNumber)
+            };
+
+
+            return PartialView("_OfficeInfo", OfficeModel);
+        }
     }
 }

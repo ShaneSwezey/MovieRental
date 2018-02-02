@@ -8,7 +8,7 @@ namespace MovieRental.Models.AboutUs
     public class CompanyListingModel
     {
 
-        public IEnumerable<CompanyDetailModel> OfficeList { get; set; }
+        public List<CompanyDetailModel> OfficeList { get; set; }
 
     }
 }

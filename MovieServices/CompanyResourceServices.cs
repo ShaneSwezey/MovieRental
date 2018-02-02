@@ -65,8 +65,9 @@ namespace MovieServices
         public Company GetOfficeById(int id)
         {
             return _context.Company
-                .FirstOrDefault(c => c.OfficeId == id);
-                
+                .Include(c => c.CompanyEmails)
+                .Include(c => c.CompanyPhoneNumbers)
+                .FirstOrDefault(c => c.OfficeId == id); 
         }
 
         public string GetState(int id)
