@@ -15,7 +15,7 @@ namespace MovieServices
             _context = context ?? throw new ArgumentException();
         }
 
-        public IQueryable<CarouselMovies> GetMovies()
+        public IEnumerable<CarouselMovies> GetMovies()
         {
             return _context.CarouselMovies;
         }

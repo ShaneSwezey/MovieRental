@@ -1,7 +1,7 @@
 ﻿@model MovieRental.Models.AboutUs.CompanyListingModel
 
 @section Styles {
-    <link href="~/css/CatalogDetail.css" rel="stylesheet" />
+    <link href="~/css/AboutUsPage.css" rel="stylesheet" />
 }
 
     <div class="container">
@@ -9,7 +9,7 @@
             <h1><b>About Us</b></h1>
             @foreach (var office in Model.OfficeList)
              {
-                <button type="button" class="btn btn-secondary" onclick='getOfficeInfo(@office.OfficeId)'>@office.City</button>
+                <button type="button" class="btn" onclick='getOfficeInfo(@office.OfficeId)'>@office.City</button>
              }
         </div>
         
@@ -21,8 +21,6 @@
 
 <script type="text/javascript">
 
-    getOfficeInfo(0);
-
     function getOfficeInfo(officeId) {
         $.ajax({
             type: "POST",
@@ -31,7 +29,7 @@
             dataType: "html",
             success: function (result) {
 
-                $('#PartialView').html(result)
+                $('#PartialView').html(result);
             },
             error: function (response) {
                 alert(response);

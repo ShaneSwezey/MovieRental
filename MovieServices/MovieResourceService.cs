@@ -24,7 +24,7 @@ namespace MovieServices
             _context.SaveChanges();
         }
 
-        public IQueryable<Movie> GetAll()
+        public IEnumerable<Movie> GetAll()
         {
             return _context.Movies;
         }

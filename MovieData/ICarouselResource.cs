@@ -6,8 +6,9 @@ namespace MovieData
 {
     public interface ICarouselResource
     {
-        // Retreives movie ids for home page carousel.
-        IQueryable<CarouselMovies> GetMovies();
+        // Return IEnumerable of movie ids from table Movies for home page carousel
+        IEnumerable<CarouselMovies> GetMovies();
+        // Returns Dictionary of Movie id's and their CroppedPosterURL from home page carousel 
         Dictionary<int, string> GetMoviesTable();
     }
 }

@@ -4,6 +4,7 @@ using System;
 
 namespace MovieData
 {
+    // Entity framework Database context
     public class MovieContext : DbContext
     {
 
